@@ -5,6 +5,10 @@ namespace ProbabilityApp
 {
     class Log
     {
+        /// <summary>
+        /// Logs the given calculation to the log file.
+        /// </summary>
+        /// <param name="calculation">The calculation to log.</param>
         public static void LogCalculation(Calculation calculation)
         {
             using (StreamWriter writer = File.AppendText("log.txt"))
@@ -14,6 +18,10 @@ namespace ProbabilityApp
             }
         }
 
+        /// <summary>
+        /// Logs the given exception to the log file.
+        /// </summary>
+        /// <param name="exception">The exception to log.</param>
         public static void LogError(Exception exception)
         {
             using (StreamWriter writer = File.AppendText("log.txt"))

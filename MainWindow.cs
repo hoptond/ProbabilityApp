@@ -18,16 +18,30 @@ public partial class MainWindow : Gtk.Window
         a.RetVal = true;
     }
 
+    /// <summary>
+    /// The event delegate when the Combine button is pressed.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="a"></param>
     protected void CombineProbs(object sender, EventArgs a)
     {
         DoCalculation(typeof(CombineCalculation));
     }
 
+    /// <summary>
+    /// The method that is run when the Either button is pressed.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="a"></param>
     protected void EitherProbs(object sender, EventArgs a)
     {
         DoCalculation(typeof(EitherCalculation));
     }
 
+    /// <summary>
+    /// Creates a new calculation based on the given type. The calculation is then performed and logged to a given file.
+    /// </summary>
+    /// <param name="t">The type of calculation to create.</param>
     private void DoCalculation(Type t)
     {
         Calculation calculation = null;
@@ -52,6 +66,11 @@ public partial class MainWindow : Gtk.Window
         }
     }
 
+    /// <summary>
+    /// Gets the input probabilities from the two text entry boxes, parsing whatever is inside as a float.
+    /// If the values are not floats or any of the values are outside the limit, an exception is thrown.
+    /// </summary>
+    /// <returns>An array containing the probabilities as floats.</returns>
     private float[] GetInputProbabilities()
     {
         var probs = new float[2];
@@ -73,10 +92,5 @@ public partial class MainWindow : Gtk.Window
             throw e;
         }
         return probs;
-    }
-
-    private void CreateCalculation(Func<float[], Calculation> del, float[] args)
-    {
-        Calculation cal = del(args);
     }
 }
